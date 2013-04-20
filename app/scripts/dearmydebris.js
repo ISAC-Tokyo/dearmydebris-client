@@ -5,6 +5,7 @@ dearMyDebris.initDebris = function(features)
 {
 }
 dearMyDebris.debris = new Array(0);
+dearMyDebris.initialViewPoint = {latitude:35.66193375685752, longitude: 139.67768669128418};
 
 dearMyDebris.fetchDebris = function(query)
 {

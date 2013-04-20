@@ -30,7 +30,7 @@ dearMyDebris.initDebris = function(features)
 function handleLoadGoogleMap()
 {
   var mapOptions = {
-    center: new google.maps.LatLng(35.66193375685752, 139.67768669128418),
+    center: new google.maps.LatLng(dearMyDebris.initialViewPoint.latitude, dearMyDebris.initialViewPoint.longitude),
     zoom: 17,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControl: false,

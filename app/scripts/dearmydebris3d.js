@@ -20,7 +20,6 @@ dearMyDebris.initDebris = function(features)
   });
 }
 
-
 function init()
 {
   google.earth.createInstance('map3d', initGoogleEarth, failureGoogleEarth);
@@ -32,38 +31,16 @@ function initGoogleEarth(instance) {
   dearMyDebris.ge.getNavigationControl().setVisibility(dearMyDebris.ge.VISIBILITY_SHOW);
   
   dearMyDebris.fetchDebris("");
+  // setting the camera
+  var lookAt = dearMyDebris.ge.createLookAt('');
+  lookAt.setLatitude(dearMyDebris.initialViewPoint.latitude);
+  lookAt.setLongitude(dearMyDebris.initialViewPoint.longitude);
+  lookAt.setRange(1500*1000); //default is 0.0
+  lookAt.setTilt(lookAt.getTilt() + 30.0);
+  // Update the view in Google Earth.
+  dearMyDebris.ge.getView().setAbstractView(lookAt);
 }
 
 function failureGoogleEarth(instance) {
 }
 
-getScreenSize = function()
-{
-  if ( window.innerWidth )
-  {
-    var width = window.innerWidth;
-  }
-  else if ( document.documentElement && document.documentElement.clientWidth != 0 )
-  {
-    var width =  document.documentElement.clientWidth;
-  }
-  else if ( document.body )
-  {
-    var width = document.body.clientWidth;
-  }
-  if ( window.innerHeight )
-  {
-    var height = window.innerHeight;
-  }
-  else if ( document.documentElement && document.documentElement.clientHeight != 0 )
-  {
-    var height =  document.documentElement.clientHeight;
-  }
-  else if ( document.body )
-  {
-    var height =  document.body.clientHeight;
-  }
-  this.width = width;
-  this.height = height;
-  return this;
-}
