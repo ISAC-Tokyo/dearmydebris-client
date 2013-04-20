@@ -10,19 +10,10 @@ dearMyDebris.initDebris = function(features)
       position: new google.maps.LatLng(o.geometry.coordinates[1],o.geometry.coordinates[0]),
       map: dearMyDebris.map,
       title: o.properties.name,
-      icon: (o.properties.category!=null)?o.properties.category:"images/DEB.png"
+      icon: ""+dearMyDebris.imageDirectoryBaseURL + ((o.properties.category!=null)?((o.properties.category)+".png"):"DEB.png")
     };
     var marker = new google.maps.Marker(markerOpts);
-    var followerstring = "";
-    o.properties.follower.forEach(function(follower)
-    {
-      if (followerstring != "")
-      {
-        followerstring += ",";
-      }
-      followerstring += follower;
-    });
-    var infowindow = new google.maps.InfoWindow({content: "<div>"+o.properties.name+"</div><div>followers: "+followerstring+"</div>"})
+    var infowindow = new google.maps.InfoWindow({content: dearMyDebris.getContentString(o)});
     google.maps.event.addListener(marker, 'mouseover', function(){infowindow.open(dearMyDebris.map,marker);});
     google.maps.event.addListener(marker, 'mouseout', function(){infowindow.close();});
   });

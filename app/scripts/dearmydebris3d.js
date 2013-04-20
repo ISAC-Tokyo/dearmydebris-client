@@ -8,6 +8,7 @@ dearMyDebris.initDebris = function(features)
   {
     var placemark = dearMyDebris.ge.createPlacemark('');
     placemark.setName(o.properties.name);
+    
     var point = dearMyDebris.ge.createPoint('');
     point.setLatitude(o.geometry.coordinates[1]);
     point.setLongitude(o.geometry.coordinates[0]);
@@ -18,13 +19,24 @@ dearMyDebris.initDebris = function(features)
 
     // setting the icon image
     var icon = dearMyDebris.ge.createIcon('');
-    icon.setHref((o.properties.category!=null)?o.properties.category:"../images/DEB.png");
+    icon.setHref(dearMyDebris.imageDirectoryBaseURL + ((o.properties.category!=null)?(o.properties.category+".png"):"DEB.png"));
     var style = dearMyDebris.ge.createStyle(''); //create a new style
     style.getIconStyle().setIcon(icon); //apply the icon to the style
     placemark.setStyleSelector(style); //apply the style to the placemark
 
     // Add the placemark to Earth.
     dearMyDebris.ge.getFeatures().appendChild(placemark);
+
+    // adding mouse click event listener
+    google.earth.addEventListener(placemark, 'click', function(event) {
+      event.preventDefault();
+      var balloon = dearMyDebris.ge.createHtmlStringBalloon('');
+
+      balloon.setContentString(dearMyDebris.getContentString(o));
+      balloon.setFeature(placemark);
+      balloon.setCloseButtonEnabled(false);
+      dearMyDebris.ge.setBalloon(balloon);
+    });
   });
 }
 
