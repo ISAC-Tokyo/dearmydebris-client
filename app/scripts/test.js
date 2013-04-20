@@ -1,22 +1,33 @@
-
 $(function() {
 });
 
 var dearMyDebris = {};
 
-
 function handleLoadGoogleMap()
 {
+  console.log("here");	
   var mapOptions = {
-    center: new google.maps.LatLng(35.6860932602017,139.75201606750488),
+    center: new google.maps.LatLng(35.66193375685752, 139.67768669128418),
     zoom: 17,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControl: false,
     disableDefaultUI: true
   };
-  var map = new google.maps.Map(document.getElementById("map-canvas"),
+  var map = dearMyDebris.map = new google.maps.Map(document.getElementById("map-canvas"),
     mapOptions);
+  dearMyDebris.renderMarker("");
 }
+
+dearMyDebris.testData =[
+    { "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [139.67768669128418,35.66193375685752]},
+      "properties": {"name": "VANGUARD 1"}
+    },
+    { "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [139.67767669128418,35.66093375685752]},
+      "properties": {"name": "VANGUARD 1"}
+    }
+];
 
 dearMyDebris.renderPath = function()
 {
@@ -41,18 +52,19 @@ dearMyDebris.renderPath = function()
 
 dearMyDebris.renderMarker = function(query)
 {
-  $.get('' + query).done(function(ret)
+
+  var bounds = new google.maps.LatLngBounds();
+//  this.debris.forEach(function(o)
+  dearMyDebris.testData.forEach(function(o)
   {
-    ret.objects.forEach(function(o)
+    var markerOpts =
     {
-      var markerOpts =
-      {
-        position: new google.maps.LatLng(o.geom.geometries[0].coordinates[1],o.geom.geometries[0].coordinates[0]),
-        map: this.map,
-        title: o.features.name
-      };
-      var marker = new google.maps.Marker(markerOpts);
-    });
+      position: new google.maps.LatLng(o.geometry.coordinates[1],o.geometry.coordinates[0]),
+      map: dearMyDebris.map,
+      title: o.properties.name
+    };
+    var marker = new google.maps.Marker(markerOpts);
   });
+  console.log("here2");
 }
 
