@@ -14,7 +14,7 @@ function handleLoadGoogleMap()
   };
   var map = dearMyDebris.map = new google.maps.Map(document.getElementById("map-canvas"),
     mapOptions);
-  dearMyDebris.renderMarker("");
+  dearMyDebris.renderMarker("v1/debris/index.json");
 }
 
 dearMyDebris.testData =[
@@ -51,21 +51,23 @@ dearMyDebris.renderPath = function()
 
 dearMyDebris.renderMarker = function(query)
 {
-
-  var bounds = new google.maps.LatLngBounds();
-//  this.debris.forEach(function(o)
-  dearMyDebris.testData.forEach(function(o)
+  $.get('http://192.168.26.160:3000/api/'+query).done(function(ret)
   {
-    var markerOpts =
+    dearMyDebris.debris = ret.feature;
+    var bounds = new google.maps.LatLngBounds();
+    dearMyDebris.debris.forEach(function(o)
+//    dearMyDebris.testData.forEach(function(o)
     {
-      position: new google.maps.LatLng(o.geometry.coordinates[1],o.geometry.coordinates[0]),
-      map: dearMyDebris.map,
-      title: o.properties.name
-    };
-    var marker = new google.maps.Marker(markerOpts);
-    var infowindow = new google.maps.InfoWindow({content: "<div>"+o.properties.name+"</div><div>followers:"+o.properties.follower[0]+","+o.properties.follower[1]+"</div>"})
-    google.maps.event.addListener(marker, 'mouseover', function(){infowindow.open(dearMyDebris.map,marker);});
-    google.maps.event.addListener(marker, 'mouseout', function(){infowindow.close();});
+      var markerOpts =
+      {
+        position: new google.maps.LatLng(o.geometry.coordinates[1],o.geometry.coordinates[0]),
+        map: dearMyDebris.map,
+        title: o.properties.name
+      };
+      var marker = new google.maps.Marker(markerOpts);
+      var infowindow = new google.maps.InfoWindow({content: "<div>"+o.properties.name+"</div><div>followers:"+o.properties.follower[0]+","+o.properties.follower[1]+"</div>"})
+      google.maps.event.addListener(marker, 'mouseover', function(){infowindow.open(dearMyDebris.map,marker);});
+      google.maps.event.addListener(marker, 'mouseout', function(){infowindow.close();});
+    });
   });
 }
-
