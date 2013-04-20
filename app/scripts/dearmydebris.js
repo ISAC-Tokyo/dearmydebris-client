@@ -23,19 +23,36 @@ dearMyDebris.fetchDebris = function(query)
   });
 }
 
+function followAction(){
+	
+	
+}
+
 dearMyDebris.getContentString = function(debris)
 {
   var ret = "";
   var followerstring = "";
+  
+  ret += "<div id='balloon_window'>" +
+        "<h1>" + debris.properties.name + "</h1>";
+  
   debris.properties.follower.forEach(function(follower)
   {
     if (followerstring != "")
     {
       followerstring += ",";
+             ret += "<div id='follower'>" +
+       "<img src = 'images/fbLogo.png'/>" +
+	   "<br />" +
+	   "<p>"+follower+"</p>"+
+	   '<input type="submit" name="button1" value="Follow" onClick="followAction()">' +
+	   "</div>";
     }
     followerstring += follower;
   });
-  ret += "<div>"+debris.properties.name+"</div><div>followers: "+followerstring+"</div>";
+  
+  ret += "<br />";
+  
   return ret;
 }
 
