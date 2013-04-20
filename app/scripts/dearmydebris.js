@@ -39,7 +39,7 @@ dearMyDebris.getContentString = function(debris)
   debris.properties.follower.forEach(function(follower, i)
   {
     followerstring += follower;
-             ret += "<div id='follower_"+i+"'>" +
+             ret += "<div id='follower_"+i+"' class='follower'>" +
        "<img src = 'images/fbLogo.png'/>" +
 	   "<br />" +
 	   "<p>"+follower+"</p>"+

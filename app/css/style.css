@@ -9,11 +9,11 @@
 }
 
 
-#follower{
+.follower{
 	float:left;
 	width: 100px;
 }
 
-#follower img{
+.follower img{
 	width:80px;
 }
