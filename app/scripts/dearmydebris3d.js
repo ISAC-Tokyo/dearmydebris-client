@@ -15,6 +15,15 @@ dearMyDebris.initDebris = function(features)
     point.setExtrude(true);
     point.setAltitude(o.geometry.coordinates[2]);
     placemark.setGeometry(point);
+/*
+    // setting the icon image
+    var icon = dearMyDebris.ge.createIcon('');
+    icon.setHref((o.properties.category!=null)?o.properties.category:"../images/DEB.png");
+    var style = dearMyDebris.ge.createStyle(''); //create a new style
+    style.getIconStyle().setIcon(icon); //apply the icon to the style
+    placemark.setStyleSelector(style); //apply the style to the placemark
+*/
+
     // Add the placemark to Earth.
     dearMyDebris.ge.getFeatures().appendChild(placemark);
   });

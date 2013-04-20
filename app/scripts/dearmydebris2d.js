@@ -9,7 +9,8 @@ dearMyDebris.initDebris = function(features)
     {
       position: new google.maps.LatLng(o.geometry.coordinates[1],o.geometry.coordinates[0]),
       map: dearMyDebris.map,
-      title: o.properties.name
+      title: o.properties.name,
+      icon: (o.properties.category!=null)?o.properties.category:"images/DEB.png"
     };
     var marker = new google.maps.Marker(markerOpts);
     var followerstring = "";
