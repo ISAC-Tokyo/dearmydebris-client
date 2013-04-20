@@ -14,7 +14,7 @@ dearMyDebris.initDebris = function(features)
     point.setLongitude(o.geometry.coordinates[0]);
     point.setAltitudeMode(dearMyDebris.ge.ALTITUDE_RELATIVE_TO_GROUND);
     point.setExtrude(true);
-    point.setAltitude(o.geometry.coordinates[2]);
+    point.setAltitude(o.geometry.coordinates[2]*500);
     placemark.setGeometry(point);
 
     // setting the icon image
@@ -28,13 +28,14 @@ dearMyDebris.initDebris = function(features)
     dearMyDebris.ge.getFeatures().appendChild(placemark);
 
     // adding mouse click event listener
-    google.earth.addEventListener(placemark, 'click', function(event) {
+    google.earth.addEventListener(placemark, 'click', function(event)
+    {
       event.preventDefault();
       var balloon = dearMyDebris.ge.createHtmlStringBalloon('');
 
       balloon.setContentString(dearMyDebris.getContentString(o));
       balloon.setFeature(placemark);
-      balloon.setCloseButtonEnabled(false);
+      balloon.setCloseButtonEnabled(true);
       dearMyDebris.ge.setBalloon(balloon);
     });
   });
