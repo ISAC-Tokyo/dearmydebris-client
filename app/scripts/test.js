@@ -5,7 +5,6 @@ var dearMyDebris = {};
 
 function handleLoadGoogleMap()
 {
-  console.log("here");	
   var mapOptions = {
     center: new google.maps.LatLng(35.66193375685752, 139.67768669128418),
     zoom: 17,
@@ -64,7 +63,9 @@ dearMyDebris.renderMarker = function(query)
       title: o.properties.name
     };
     var marker = new google.maps.Marker(markerOpts);
+    var infowindow = new google.maps.InfoWindow({content: "<div>"+o.properties.name+"</div>"})
+    google.maps.event.addListener(marker, 'mouseover', function(){infowindow.open(dearMyDebris.map,marker);});
+    google.maps.event.addListener(marker, 'mouseout', function(){infowindow.close();});
   });
-  console.log("here2");
 }
 
