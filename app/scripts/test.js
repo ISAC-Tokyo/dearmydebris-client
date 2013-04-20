@@ -19,12 +19,12 @@ function handleLoadGoogleMap()
 
 dearMyDebris.testData =[
     { "type": "Feature",
-      "geometry": {"type": "Point", "coordinates": [139.67768669128418,35.66193375685752]},
-      "properties": {"name": "VANGUARD 1"}
+      "geometry": {"type": "Point", "coordinates": [139.67768669128418,35.66193375685752,100000]},
+      "properties": {"name": "VANGUARD 1","id":"1","follower":["osoken","smellman"]}
     },
     { "type": "Feature",
-      "geometry": {"type": "Point", "coordinates": [139.67767669128418,35.66093375685752]},
-      "properties": {"name": "VANGUARD 1"}
+      "geometry": {"type": "Point", "coordinates": [139.67767669128418,35.66093375685752,120000]},
+      "properties": {"name": "VANGUARD 1","id":"2","follower":["tacke-yuuki","tree4-s","jumbo","taka.aom"]}
     }
 ];
 
@@ -63,7 +63,7 @@ dearMyDebris.renderMarker = function(query)
       title: o.properties.name
     };
     var marker = new google.maps.Marker(markerOpts);
-    var infowindow = new google.maps.InfoWindow({content: "<div>"+o.properties.name+"</div>"})
+    var infowindow = new google.maps.InfoWindow({content: "<div>"+o.properties.name+"</div><div>followers:"+o.properties.follower[0]+","+o.properties.follower[1]+"</div>"})
     google.maps.event.addListener(marker, 'mouseover', function(){infowindow.open(dearMyDebris.map,marker);});
     google.maps.event.addListener(marker, 'mouseout', function(){infowindow.close();});
   });
