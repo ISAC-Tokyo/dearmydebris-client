@@ -29,14 +29,14 @@ function initGoogleEarth(instance) {
   dearMyDebris.ge = instance;
   dearMyDebris.ge.getWindow().setVisibility(true);
   dearMyDebris.ge.getNavigationControl().setVisibility(dearMyDebris.ge.VISIBILITY_SHOW);
-  
+
   dearMyDebris.fetchDebris("");
   // setting the camera
   var lookAt = dearMyDebris.ge.createLookAt('');
   lookAt.setLatitude(dearMyDebris.initialViewPoint.latitude);
   lookAt.setLongitude(dearMyDebris.initialViewPoint.longitude);
-  lookAt.setRange(1500*1000); //default is 0.0
-  lookAt.setTilt(lookAt.getTilt() + 30.0);
+  lookAt.setRange(800000); //default is 0.0
+  lookAt.setTilt(lookAt.getTilt() + 80.0);
   // Update the view in Google Earth.
   dearMyDebris.ge.getView().setAbstractView(lookAt);
 }
