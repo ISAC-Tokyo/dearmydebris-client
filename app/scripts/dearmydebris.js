@@ -59,18 +59,19 @@ dearMyDebris.getContentString = function(debris)
   
   ret += "<div id='balloon_window'>" +
     "<div class='balloon_header'>"+
-        "<h1>" + debris.properties.name + "</h1>"+
-	   '<input type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')"></div>' ;
-  debris.properties.follower.forEach(function(follower, i)
-  {
-    followerstring += follower;
-             ret += "<div id='follower_"+i+"' class='follower'>" +
-       "<img src = 'images/" + follower + ".png'/>" +
-	   "<br />" +
-	   "<p>"+follower+"</p>"+
-	   "</div>";
-  });
-  ret += "<br />";
+    
+        "<h1>" + debris.properties.name + "</h1>";
+ // debris.properties.follower.forEach(function(follower, i)
+  // {
+    // followerstring += follower;
+             // ret += "<div id='follower_"+i+"' class='follower'>" +
+       // "<img src = 'images/" + follower + ".png'/>" +
+	   // "<br />" +
+	   // "<p>"+follower+"</p>"+
+	   // "</div>";
+  // });
+  
+  ret += "</div><br />";
   
   return ret;
 }
@@ -93,7 +94,7 @@ dearMyDebris.getContentStringToOver = function(debris)
 	   "</div>";
 	     });
 	   	ret += '</div>'+
-	   	'<div id="descript">'+
+	   	'<div >'+
 	   	debris.properties.nssdc_catalog.description+
 	   	'</div>'+
 	   	'<div id="debri_follow_btn">'+
