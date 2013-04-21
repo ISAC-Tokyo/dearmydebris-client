@@ -6,8 +6,10 @@ dearMyDebris.initDebris = function(features)
 }
 dearMyDebris.debris = new Array(0);
 dearMyDebris.initialViewPoint = {latitude:35.66193375685752, longitude: 139.67768669128418};
-dearMyDebris.queryBase = "http://192.168.27.149:3000/api/v1/debris/index.json";
-dearMyDebris.imageDirectoryBaseURL = 'http://192.168.26.160:3000/assets/';
+//dearMyDebris.queryBase = "http://192.168.27.149:3000/api/v1/debris/index.json";
+dearMyDebris.queryBase = "http://debris.smellman.org/api/v1/debris/index.json";
+//dearMyDebris.imageDirectoryBaseURL = 'http://192.168.26.160:3000/assets/';
+dearMyDebris.imageDirectoryBaseURL = 'http://debris.smellman.org/assets/';
 
 dearMyDebris.testUserData =
 {
