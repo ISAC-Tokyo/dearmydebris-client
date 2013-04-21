@@ -80,7 +80,7 @@ dearMyDebris.getContentStringToOver = function(debris)
 {
   var ret = "";
   var followerstring = "";
-  
+  console.log(debris);
   ret += "<h1 id='debri_name'>" + debris.properties.name + "</h1>"+
   '<div id="debri_followers">';
   debris.properties.follower.forEach(function(follower, i)
@@ -92,9 +92,13 @@ dearMyDebris.getContentStringToOver = function(debris)
 	   "<p>"+follower+"</p>"+
 	   "</div>";
 	     });
-	   	ret += '</div><div id="debri_follow_btn">'+
-	   '<input style = "float:left" type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')"></div>' +
-	   '<input type="submit" name="button1" value="Close" onClick="closeOver()">'+
+	   	ret += '</div>'+
+	   	'<div id="descript">'+
+	   	debris.properties.nssdc_catalog.description+
+	   	'</div>'+
+	   	'<div id="debri_follow_btn">'+
+	   '<input id="center_btn" style = "float:left" type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')" />' +
+	   '<input id="center_btn" type="submit" name="button1" value="Close" onClick="closeOver()">'+
 	   "</div>";
   ret += "<br />";
   
