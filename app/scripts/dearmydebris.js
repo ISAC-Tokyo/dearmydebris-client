@@ -25,7 +25,7 @@ dearMyDebris.fetchDebris = function(query)
 
 function followAction(){
 	
-	
+	console.log("test");
 }
 
 dearMyDebris.getContentString = function(debris)
@@ -51,4 +51,6 @@ dearMyDebris.getContentString = function(debris)
   
   return ret;
 }
+
+
 
