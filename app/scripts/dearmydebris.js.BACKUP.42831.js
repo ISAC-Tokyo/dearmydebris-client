@@ -17,6 +17,12 @@ dearMyDebris.testUserData =
   picture_src: "images/chika.png"
 };
 
+dearMyDebris.testUserData =
+{
+  user_name: "chika",
+  picture_src: "images/chika.png"
+};
+
 dearMyDebris.fetchDebris = function(query)
 {
   $.get(dearMyDebris.queryBase+query).done(function(ret)
@@ -70,19 +76,18 @@ dearMyDebris.getContentString = function(debris)
 	   "<p>"+follower+"</p>"+
 	   "</div>";
   });
+<<<<<<< HEAD
   ret += "<br />";
   
   return ret;
 }
-
 
 dearMyDebris.getContentStringToOver = function(debris)
 {
   var ret = "";
   var followerstring = "";
   
-  ret += "<h1 id='debri_name'>" + debris.properties.name + "</h1>"+
-  '<div id="debri_followers">';
+  ret += "<h1 id='debri_name'>" + debris.properties.name + "</h1>";
   debris.properties.follower.forEach(function(follower, i)
   {
     followerstring += follower;
@@ -92,13 +97,14 @@ dearMyDebris.getContentStringToOver = function(debris)
 	   "<p>"+follower+"</p>"+
 	   "</div>";
 	     });
-	   	ret += '</div><div id="debri_follow_btn">'+
-	   '<input style = "float:left" type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')"></div>' +
+	   	'<div id="debri_follow_btn">'+
+	   '<input type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')"></div>' +
 	   '<input type="submit" name="button1" value="Close" onClick="closeOver()">'+
 	   "</div>";
+=======
+>>>>>>> 6db73c86690b60353d754c9b6301aaefbb7242c3
   ret += "<br />";
   
-
   return ret;
 }
 

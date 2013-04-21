@@ -6,10 +6,8 @@ dearMyDebris.initDebris = function(features)
 }
 dearMyDebris.debris = new Array(0);
 dearMyDebris.initialViewPoint = {latitude:35.66193375685752, longitude: 139.67768669128418};
-//dearMyDebris.queryBase = "http://192.168.27.149:3000/api/v1/debris/index.json";
-dearMyDebris.queryBase = "http://debris.smellman.org/api/v1/debris/index.json";
-//dearMyDebris.imageDirectoryBaseURL = 'http://192.168.26.160:3000/assets/';
-dearMyDebris.imageDirectoryBaseURL = 'http://debris.smellman.org/assets/';
+dearMyDebris.queryBase = "http://192.168.27.149:3000/api/v1/debris/index.json";
+dearMyDebris.imageDirectoryBaseURL = 'http://192.168.26.160:3000/assets/';
 
 dearMyDebris.testUserData =
 {
@@ -75,14 +73,12 @@ dearMyDebris.getContentString = function(debris)
   return ret;
 }
 
-
 dearMyDebris.getContentStringToOver = function(debris)
 {
   var ret = "";
   var followerstring = "";
   
-  ret += "<h1 id='debri_name'>" + debris.properties.name + "</h1>"+
-  '<div id="debri_followers">';
+  ret += "<h1 id='debri_name'>" + debris.properties.name + "</h1>";
   debris.properties.follower.forEach(function(follower, i)
   {
     followerstring += follower;
@@ -92,13 +88,12 @@ dearMyDebris.getContentStringToOver = function(debris)
 	   "<p>"+follower+"</p>"+
 	   "</div>";
 	     });
-	   	ret += '</div><div id="debri_follow_btn">'+
-	   '<input style = "float:left" type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')"></div>' +
+	   	'<div id="debri_follow_btn">'+
+	   '<input type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')"></div>' +
 	   '<input type="submit" name="button1" value="Close" onClick="closeOver()">'+
 	   "</div>";
   ret += "<br />";
   
-
   return ret;
 }
 

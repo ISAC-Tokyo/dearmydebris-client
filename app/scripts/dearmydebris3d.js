@@ -28,7 +28,7 @@ dearMyDebris.initDebris = function(features)
     dearMyDebris.ge.getFeatures().appendChild(placemark);
 
     // adding mouse click event listener
-    google.earth.addEventListener(placemark, 'click', function(event)
+    google.earth.addEventListener(placemark, 'mouseover', function(event)
     {
       event.preventDefault();
       var balloon = dearMyDebris.ge.createHtmlStringBalloon('');
@@ -37,26 +37,34 @@ dearMyDebris.initDebris = function(features)
       balloon.setFeature(placemark);
       balloon.setCloseButtonEnabled(true);
       dearMyDebris.ge.setBalloon(balloon);
-      update_explain(o);
+        // $('#follow_btn').on('click', function(e){   
+//         	  
+		// });
+
     });
+      google.earth.addEventListener(placemark, 'click', function(event){
+      	      event.preventDefault();
+      	      update_explain(o);
+      })
   });
+
   
 }
 
-  $('#follow_btn').on('click', function(e){     
-  	console.log("tete");
-	});
 
 function update_explain(o)
 {
-	$('#debri_name').text(o.properties.name);
-	var t = "Follower";
-	o.properties.follower.forEach(function(text){
-		t += text + "<br />";
-	})
-	$('#debri_followers').text(t);
-	
-	$('#explain_window').innerHTML(dearMyDebris.getContentStringToOver(o));
+	console.log("inner")
+	// $('#debri_name').text(o.properties.name);
+	// var t = "Follower";
+	// o.properties.follower.forEach(function(text){
+		// t += text + "<br />";
+	// })
+	// $('#debri_followers').text(t);
+
+	//$('#explain_window').innerHTML("test");
+	$('#explain_window').show();
+	$('#explain_window').html(dearMyDebris.getContentStringToOver(o));
 }
 
 

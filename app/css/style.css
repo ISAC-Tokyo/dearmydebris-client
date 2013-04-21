@@ -14,6 +14,7 @@
 }
 
 #explain_window{
+display: none;
   bottom: 30px;
   left: 30px;
   width: 30%;
@@ -35,15 +36,19 @@
 #debri_name{
 	text-align:center;
 	width:100%;
-	height:50%
+	height:20%
 }
 
 #debri_followers{
 	width:100%;
-	height:30%
+	height:40%
 }
 #debri_follow_btn{
 	text-align:center;
 	width:100%;
 	height:20%
+}
+#follow_btn{
+	float:left
+	
 }
