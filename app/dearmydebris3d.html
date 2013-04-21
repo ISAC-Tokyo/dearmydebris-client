@@ -13,22 +13,24 @@
     <script type="text/javascript" src="scripts/dearmydebris.js"></script>
     <script type="text/javascript" src="scripts/dearmydebris3d.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="css/bootsrtap/bootstrap.css" rel="stylesheet">
-    <link href="css/bootsrtap/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootsrtap/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/bootsrtap/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-responsive.min.css" rel="stylesheet">
     
   </head>
 <body>
 
 	<input type="submit" name="button1" value="Follow" onClick="startAnimation()">
   <div id="map3d" style="height:100%; width:100%"></div>
+  
 	  <div id="explain_window">
-	  	<div id="debri_img"></div>
+	  	<div id="debri_name"></div>
 	  	<div id="debri_explain"></div>
 	  	<div id="debri_followers"></div>
 	  	<div id="debri_follow_btn">
-		<input  type="submit" name="button1" value="Follow" onClick="followAction()">
+		<a href="#" class="btn btn-primary">Follow</a>
+		<a href="#" class="btn btn-primary">Close</a>
 		</div>
 	  </div>
 </body>

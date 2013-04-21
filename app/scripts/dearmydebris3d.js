@@ -19,7 +19,7 @@ dearMyDebris.initDebris = function(features)
 
     // setting the icon image
     var icon = dearMyDebris.ge.createIcon('');
-    icon.setHref(dearMyDebris.imageDirectoryBaseURL + ((o.properties.category!=null)?(o.properties.category+".png"):"DEB.png"));
+    icon.setHref(dearMyDebris.imageDirectoryBaseURL + ((o.properties.category!=null)?(o.properties.category+".png"):"rocket.png"));
     var style = dearMyDebris.ge.createStyle(''); //create a new style
     style.getIconStyle().setIcon(icon); //apply the icon to the style
     placemark.setStyleSelector(style); //apply the style to the placemark
@@ -44,11 +44,13 @@ dearMyDebris.initDebris = function(features)
 
 function update_explain(o)
 {
-	$('#explain_window').append(
-		'<p> DebliName:' + o.properties.name + '</p><br />'+
-		'<p> DebliName:' + o.properties.name + '</p><br />'
-	);
-	
+	console.log(o);
+	$('#debri_name').text(o.properties.name);
+	var t;
+	o.properties.follower.forEach(function(text){
+		t += text + "<br />";
+	})
+	$('#debri_explain').text(t);
 }
 
 
