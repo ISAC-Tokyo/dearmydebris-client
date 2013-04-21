@@ -14,7 +14,7 @@ dearMyDebris.initDebris = function(features)
     point.setLongitude(o.geometry.coordinates[0]);
     point.setAltitudeMode(dearMyDebris.ge.ALTITUDE_RELATIVE_TO_GROUND);
     point.setExtrude(true);
-    point.setAltitude(o.geometry.coordinates[2]*500);
+    point.setAltitude(o.geometry.coordinates[2]*200);
     placemark.setGeometry(point);
 
     // setting the icon image
@@ -40,17 +40,23 @@ dearMyDebris.initDebris = function(features)
       update_explain(o);
     });
   });
+  
 }
+
+  $('#follow_btn').on('click', function(e){     
+  	console.log("tete");
+	});
 
 function update_explain(o)
 {
-	console.log(o);
 	$('#debri_name').text(o.properties.name);
-	var t;
+	var t = "Follower";
 	o.properties.follower.forEach(function(text){
 		t += text + "<br />";
 	})
-	$('#debri_explain').text(t);
+	$('#debri_followers').text(t);
+	
+	$('#explain_window').innerHTML(dearMyDebris.getContentStringToOver(o));
 }
 
 
@@ -86,7 +92,6 @@ var ANIM_ALTITUDE = 100;
 
 
 function startAnimation() {
-	console.log("test");
   if (!animRunning) {
   	  dearMyDebris.ge.getOptions().setMouseNavigationEnabled(false);
     dearMyDebris.ge.getOptions().setFlyToSpeed(0.5);
