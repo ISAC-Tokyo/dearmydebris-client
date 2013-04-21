@@ -9,6 +9,12 @@ dearMyDebris.initialViewPoint = {latitude:35.66193375685752, longitude: 139.6776
 dearMyDebris.queryBase = "http://192.168.27.149:3000/api/v1/debris/index.json";
 dearMyDebris.imageDirectoryBaseURL = 'http://192.168.26.160:3000/assets/';
 
+dearMyDebris.testUserData =
+{
+  user_name: "chika",
+  picture_src: "images/chika.png"
+};
+
 dearMyDebris.fetchDebris = function(query)
 {
   $.get(dearMyDebris.queryBase+query).done(function(ret)
@@ -23,9 +29,25 @@ dearMyDebris.fetchDebris = function(query)
   });
 }
 
-function followAction(){
-	
-	
+dearMyDebris.getDebrisByID = function(debris_id)
+{
+  for (var i=0;i<dearMyDebris.debris.length;++i)
+  {
+    if (dearMyDebris.debris[i].properties.id === debris_id)
+    {
+      return dearMyDebris.debris[i];
+    }
+  }
+  return null;
+}
+
+dearMyDebris.followAction = function(debris_id, user_name)
+{
+  var debris = dearMyDebris.getDebrisByID(debris_id);
+  if (debris != null)
+  {
+    debris.properties.follower = debris.properties.follower.concat(user_name);
+  }
 }
 
 dearMyDebris.getContentString = function(debris)
@@ -34,19 +56,18 @@ dearMyDebris.getContentString = function(debris)
   var followerstring = "";
   
   ret += "<div id='balloon_window'>" +
-        "<h1>" + debris.properties.name + "</h1>";
-  
+    "<div class='balloon_header'>"+
+        "<h1>" + debris.properties.name + "</h1>"+
+	   '<input type="submit" name="button1" value="Follow" onClick="dearMyDebris.followAction(\''+debris.properties.id+'\',\''+dearMyDebris.testUserData.user_name+'\')"></div>' ;
   debris.properties.follower.forEach(function(follower, i)
   {
     followerstring += follower;
              ret += "<div id='follower_"+i+"' class='follower'>" +
-       "<img src = 'images/fbLogo.png'/>" +
+       "<img src = 'images/" + follower + ".png'/>" +
 	   "<br />" +
 	   "<p>"+follower+"</p>"+
-	   '<input type="submit" name="button1" value="Follow" onClick="followAction()">' +
 	   "</div>";
   });
-  
   ret += "<br />";
   
   return ret;

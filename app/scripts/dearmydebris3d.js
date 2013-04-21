@@ -14,12 +14,12 @@ dearMyDebris.initDebris = function(features)
     point.setLongitude(o.geometry.coordinates[0]);
     point.setAltitudeMode(dearMyDebris.ge.ALTITUDE_RELATIVE_TO_GROUND);
     point.setExtrude(true);
-    point.setAltitude(o.geometry.coordinates[2]*500);
+    point.setAltitude(o.geometry.coordinates[2]*200);
     placemark.setGeometry(point);
 
     // setting the icon image
     var icon = dearMyDebris.ge.createIcon('');
-    icon.setHref(dearMyDebris.imageDirectoryBaseURL + ((o.properties.category!=null)?(o.properties.category+".png"):"DEB.png"));
+    icon.setHref(dearMyDebris.imageDirectoryBaseURL + ((o.properties.category!=null)?(o.properties.category+".png"):"rocket.png"));
     var style = dearMyDebris.ge.createStyle(''); //create a new style
     style.getIconStyle().setIcon(icon); //apply the icon to the style
     placemark.setStyleSelector(style); //apply the style to the placemark
